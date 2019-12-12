@@ -37,7 +37,11 @@ dist
 # Optional REPL history
 .node_repl_history
 
+# safety reasons lol
+bot-config.json
+
 # Custom
 dev-run.bat
 app.js
 test.js
+
