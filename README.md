@@ -1,16 +1,13 @@
-# Rhythm-Bot 2.0 Typescript Update
-- All converted to typescript for ease of collaboration, make sure to globally install typescript as listed in the installation below
-
-Note: This is not the bot listed here [https://rythmbot.co/](https://rythmbot.co/)
+# Mr. Murphy II: A Better Mr. Murphy for all of Discord.
 
 ## Description
 
-Simple little music bot to queue up and play youtube audio over discord voice channels.
+Mr. Murphy II is a bot that can play music, send memes, and more.
 
 ## Unlisted dependencies
 
-- `Python2.7` This version is required for node-gyp I think?
-- `FFMPEG` command line tool
+- `python`
+- `ffmpeg` command line tool
 - `node-gyp` command line tool
 - `node.js` version 10.X.X or higher is recommended
 - `typescript` types for javascript, enables easier group collaboration and simple right click to look up definitions

@@ -10,8 +10,10 @@ export function joinUserChannel(msg: Message): Promise<VoiceConnection> {
                 .then(connection => {
                     done(connection);
                 });
-        } else
+        } else {
+            msg.channel.send(":x: You are not in a voice channel!");
             error(`User isn't on a voice channel!`);
+        }
     });
 }
 

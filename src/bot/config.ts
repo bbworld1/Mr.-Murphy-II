@@ -13,6 +13,10 @@ export interface BotConfig {
         token: string;
         log?: boolean;
     },
+    youtube: {
+        apikey: string;
+        log?: boolean;
+    },
     queue?: {
         announce?: boolean;
         repeat?: boolean;
@@ -36,6 +40,10 @@ export const DefaultBotConfig: BotConfig = {
         token: '<BOT-TOKEN>',
         log: true
     },
+    youtube: {
+        apikey: '<YT-KEY>',
+        log: true
+    },
     command: {
         symbol: '!'
     },
@@ -45,7 +53,7 @@ export const DefaultBotConfig: BotConfig = {
     },
     stream: {
         seek: 0,
-        passes: 3, 
+        passes: 3,
         volume: 1,
         bitrate: 'auto'
     }
