@@ -16,6 +16,10 @@ const murphyHelpCommands = [
     value: "Sends a JoJo meme from r/shitpostcrusaders. "
   },
   {
+    name: ".dank",
+    value: "Sends a dank meme from r/dankmemes. "
+  },
+  {
     name: ".animeme",
     value: "Sends an animeme from r/animemes. "
   },
@@ -62,6 +66,9 @@ export default class MurphyPlugin implements IBotPlugin {
     })
     .on("jojo", (cmd: ParsedMessage, msg: Message) => {
       this.jojo(msg, bot);
+    })
+    .on("dank", (cmd: ParsedMessage, msg: Message) => {
+      this.dank(msg, bot);
     })
     .on("milestokm", (cmd: ParsedMessage, msg: Message) => {
       this.milestokm(msg, bot);
@@ -115,6 +122,21 @@ export default class MurphyPlugin implements IBotPlugin {
     try {
       const { body } = await snekfetch
         .get('https://www.reddit.com/r/shitpostcrusaders.json?sort=top&t=week')
+        .query({ limit: 800 });
+      const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+      if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
+      const randomnumber = Math.floor(Math.random() * allowed.length)
+      message.channel.send(allowed[randomnumber].data.url)
+    } catch (err) {
+      return console.log(err);
+    }
+  }
+
+  dank = async (message, bot) => {
+  	const snekfetch = require('snekfetch');
+    try {
+      const { body } = await snekfetch
+        .get('https://www.reddit.com/r/dankmemes.json?sort=top&t=week')
         .query({ limit: 800 });
       const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
       if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
