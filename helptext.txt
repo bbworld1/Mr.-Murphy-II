@@ -1,6 +1,6 @@
 Commands:
 
-`ping` - Testing bot connection
+`ping` - Test the bot connection
 `help` - Get the help text
 `join` - Join user voice channel
 `leave` - Leave voice channel
