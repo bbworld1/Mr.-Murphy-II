@@ -81,7 +81,10 @@ export default class MurphyPlugin implements IBotPlugin {
       this.kmtomiles(msg, bot);
     })
     .on("rogerhub", (cmd: ParsedMessage, msg: Message) => {
-      msg.channel.send((Number(cmd.arguments[1]) - ((100-Number(cmd.arguments[2]))*Number(cmd.arguments[0]))/Number(cmd.arguments[2])));
+      let current_grade = Number(cmd.arguments[0]);
+      let desired_grade = Number(cmd.arguments[1]);
+      let final_weight = Number(cmd.arguments[2])*0.01;
+      msg.channel.send(`You need to score a ${(desired_grade - ((1-final_weight)*current_grade))/final_weight}% on the final!`);
     })
     .on("github", (cmd: ParsedMessage, msg: Message) => {
       msg.channel.send("https://github.com/bbworld1/Mr.-Murphy-II");
