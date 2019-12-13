@@ -81,7 +81,7 @@ export default class MurphyPlugin implements IBotPlugin {
       this.kmtomiles(msg, bot);
     })
     .on("rogerhub", (cmd: ParsedMessage, msg: Message) => {
-      msg.channel.send((cmd.arguments[1] - ((100-w)*cmd.arguments[0])/cmd.arguments[2]));
+      msg.channel.send((Number(cmd.arguments[1]) - ((100-Number(cmd.arguments[2]))*Number(cmd.arguments[0]))/Number(cmd.arguments[2])));
     })
     .on("github", (cmd: ParsedMessage, msg: Message) => {
       msg.channel.send("https://github.com/bbworld1/Mr.-Murphy-II");
