@@ -32,6 +32,10 @@ const murphyHelpCommands = [
     value: "Converts (number) km to miles. Can also be accessed by \"(number) km to miles. \""
   },
   {
+    name: ".rogerhub (current_grade) (desired_grade) (final_exam_weight)",
+    value: "Calculates what score you need on your final to raise it from your current grade to your desired grade. All units are in %."
+  },
+  {
     name: ".github",
     value: "Sends link to Mr. Murphy source code. "
   },
@@ -75,6 +79,9 @@ export default class MurphyPlugin implements IBotPlugin {
     })
     .on("kmtomiles", (cmd: ParsedMessage, msg: Message) => {
       this.kmtomiles(msg, bot);
+    })
+    .on("rogerhub", (cmd: ParsedMessage, msg: Message) => {
+      msg.channel.send((cmd.arguments[1] - ((100-w)*cmd.arguments[0])/cmd.arguments[2]));
     })
     .on("github", (cmd: ParsedMessage, msg: Message) => {
       msg.channel.send("https://github.com/bbworld1/Mr.-Murphy-II");
